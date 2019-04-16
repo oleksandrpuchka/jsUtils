@@ -33,7 +33,7 @@ function safeAssign(object, properties, defaultValue) {
       safeAssignedValue = defaultValue;
     }
   }
-  return safeAssignedValue || null;
+  return safeAssignedValue !== undefined ? safeAssignedValue : null;
 }
 
 module.exports = {
