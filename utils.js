@@ -17,11 +17,11 @@
 function safeAssign(object, properties, defaultValue) {
   let safeAssignedValue;
   if(properties && typeof properties === 'string') {
-    const propertiesListRegExp = /(?:([\w\s]+)\s?)/g; // match all values beetwen . or ' or " or []
+    const propertiesListRegExp = /(?:([\w\s\-]+)\s?)/g; // match all values beetwen . or ' or " or []
 
     try {
       safeAssignedValue = properties.match(propertiesListRegExp).reduce(function(item, initValue) {
-        if(Object.prototype.hasOwnProperty.call(item, initValue) && item[initValue]) {
+        if(Object.prototype.hasOwnProperty.call(item, initValue) && item[initValue] !== undefined && item[initValue] !== null) {
           return item[initValue];
         } else { // eslint-disable-line
           throw { // eslint-disable-line
