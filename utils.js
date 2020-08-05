@@ -1,8 +1,13 @@
 'use strict';
 
 /*
-* Function does deep level check for properties and assign.
-* let test = {
+ * Function does deep level check for properties and assign.
+ * @param {Object} object The object
+ * @param {String} propertyString The property string, i.e. 'data.myValue.prop1'
+ * @param {Any} defaultValue Default values in case no property found
+ * @return {Object} The value of the given property or undefined
+ * @example
+ * let test = {
       a: {
         b: [
           {a: 1},
@@ -17,7 +22,7 @@
 function safeAssign(object, properties, defaultValue) {
   let safeAssignedValue;
   if(properties && typeof properties === 'string') {
-    const propertiesListRegExp = /(?:([\w\s-]+)\s?)/g; // match all values beetwen . or ' or " or []
+    const propertiesListRegExp = /(?:([\w\s\-]+)\s?)/g; // match all values beetwen . or ' or " or []
 
     try {
       safeAssignedValue = properties.match(propertiesListRegExp).reduce(function(item, initValue) {
